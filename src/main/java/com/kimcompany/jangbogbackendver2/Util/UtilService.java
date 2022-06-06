@@ -36,4 +36,12 @@ public class UtilService {
         response.setHeader(AuthenticationText, accessToken);
         response.setHeader(refreshTokenHeaderName, refreshToken);
     }
+    public static boolean confirmNull(String s){
+        if(s==null){
+            return true;
+        }else if(s.isBlank()||s.equals("null")||s.equals("undefined")){
+            return true;
+        }
+        return false;
+    }
 }

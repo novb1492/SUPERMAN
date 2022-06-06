@@ -1,8 +1,10 @@
 package com.kimcompany.jangbogbackendver2.Config;
 
 
+import com.kimcompany.jangbogbackendver2.Filter.AuthorizationFilter;
 import com.kimcompany.jangbogbackendver2.Filter.CorsConfig;
 import com.kimcompany.jangbogbackendver2.Filter.LoginFilter;
+import com.kimcompany.jangbogbackendver2.Util.AuthorizationService;
 import com.kimcompany.jangbogbackendver2.Util.LoginService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final CorsConfig corsConfig;
     private final LoginService loginService;
+    private final AuthorizationService authorizationService;
+
   
     @Bean
     @Override
@@ -44,8 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //.csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
                 //.and()
                 .addFilter(corsConfig.corsfilter())
-                .addFilter(new LoginFilter(authenticationManager(),loginService))
-               // .addFilter(new authorizationFilter(authenticationManager(),jwtService,redisTemplate,access_token_cookie_name,refresh_token_cookie_name))
+                .addFilter(new LoginFilter(authenticationManager(), loginService))
+                .addFilter(new AuthorizationFilter(authenticationManager(), authorizationService))
                 .formLogin().disable().httpBasic().disable()
                 .authorizeRequests().antMatchers("/auth/**").authenticated()
                 .anyRequest().permitAll();
