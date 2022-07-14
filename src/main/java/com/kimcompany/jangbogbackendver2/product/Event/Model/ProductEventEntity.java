@@ -19,8 +19,14 @@ import java.sql.Timestamp;
 @Entity
 public class ProductEventEntity {
 
-    @EmbeddedId
-    private ProductEventPk productEventPk;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PRODUCT_EVENT_ID", unique = true)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PRODUCT_ID",referencedColumnName = "PRODUCT_ID")
+    private ProductEntity productEntity;
 
     @Embedded
     private CommonColumn commonColumn;

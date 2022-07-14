@@ -30,6 +30,15 @@ public class OrderEntity {
     @Column(name = "MEMBER_ID",nullable = false)
     private Long memberId;
 
+    @Column(name = "PRICE",nullable = false)
+    private Integer price;
+
+    @Column(name = "TOTAL_COUNT",nullable = false)
+    private Integer totalCount;
+
+    @Column(name = "EVENT")
+    private Integer event;
+
     @Embedded
     private CommonColumn commonColumn;
 

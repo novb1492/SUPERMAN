@@ -16,8 +16,10 @@ import javax.persistence.*;
 @Entity
 public class ProductEntity {
 
-    @EmbeddedId
-    private ProductPk productPk;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "PRODUCT_ID", unique = true)
+    private Long id;
 
     @Embedded
     private CommonColumn commonColumn;
@@ -34,6 +36,13 @@ public class ProductEntity {
 
     @Column(name = "PRODUCT_IMG_PATH",nullable = false,length = 1000)
     private String productImgPath;
+
+
+    @Column(name = "PRODUCT_PRICE",nullable = false)
+    private String price;
+
+    @Column(name = "PRODUCT_NAME",nullable = false)
+    private String name;
 
 
 

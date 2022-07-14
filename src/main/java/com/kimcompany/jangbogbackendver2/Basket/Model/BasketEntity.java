@@ -27,12 +27,7 @@ public class BasketEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "PRODUCT_NAME",referencedColumnName = "PRODUCT_NAME"),
-            @JoinColumn(name = "FLYER_DETAIL_ID",referencedColumnName = "FLYER_DETAIL_ID"),
-            @JoinColumn(name = "FLYER_ID",referencedColumnName = "FLYER_ID"),
-            @JoinColumn(name = "STORE_ID",referencedColumnName = "STORE_ID")
-    })
+    @JoinColumn(name = "PRODUCT_ID",referencedColumnName = "PRODUCT_ID")
     private ProductEntity productEntity;
 
     @ManyToOne(fetch = FetchType.LAZY)

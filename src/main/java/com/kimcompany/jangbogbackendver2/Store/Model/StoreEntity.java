@@ -25,10 +25,7 @@ public class StoreEntity {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumns({
-            @JoinColumn(name = "ADMIN_ID",referencedColumnName = "ADMIN_ID"),
-            @JoinColumn(name = "COMPANY_CODE",referencedColumnName = "COMPANY_CODE")
-    })
+    @JoinColumn(name = "COMPANY_ID",referencedColumnName = "COMPANY_ID")
     private CompanyEntity companyEntity;
 
     @Column(name = "MIN_ORDER_PRICE",nullable = false)
